@@ -80,13 +80,13 @@ const handleSubmit = async (e) => {
     // to focus scroll to the bottom 
     chatContainer.scrollTop = chatContainer.scrollHeight;
 
-    // specific message div 
+    // specific message div
     const messageDiv = document.getElementById(uniqueId)
 
     // messageDiv.innerHTML = "..."
     loader(messageDiv)
 
-    const response = await fetch('http://localhost:5000', {
+    const response = await fetch('http://localhost:5000/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -118,3 +118,4 @@ form.addEventListener('keyup', (e) => {
         handleSubmit(e)
     }
 })
+
