@@ -6,7 +6,8 @@ import helmet from 'helmet'
 import rateLimit from "express-rate-limit";
 import winston from 'winston';
 import Joi from 'joi';
-const natural = require('natural');
+
+import natural from 'natural';
 
 dotenv.config()
 
@@ -52,7 +53,7 @@ app.get('/', async (req, res) => {
   })
 })
 
-app.use(express.json());
+app.use(express.json);
 app.use((req, res, next) => {
     const { error } = validateInput(req.body);
     if (error) {
@@ -62,7 +63,7 @@ app.use((req, res, next) => {
     next();
 });
 
-app.post('/', async (req, res) => {
+app.post('/', async (req, res, next) => {
   try {
     const prompt = req.body.prompt;
     // Store the previous conversation context
